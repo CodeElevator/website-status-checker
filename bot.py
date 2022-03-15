@@ -21,10 +21,13 @@ def get_status_code(url: str, headers=None):
   elif r.status_code == 400
     res = "Bad request"
   else:
-    res = "An error has occured"
+    res = "An error has occured, check the website for more infos!"
   return res
 
 @bot.command(name="webstatus", aliases=["ws", "status"], description="Show the statuses of websites.")
 async def webstatus(ctx, urls=List[str]):
   embed = discord.Embed(title="Websites statuses", description="showing website statuses")
-  
+  for list in urls:
+    stats = get_status_code(url=list)
+    embed.add_field(name=list, value=res)
+  await ctx.send(embed=embed)
