@@ -31,3 +31,5 @@ async def webstatus(ctx, urls=List[str]):
     stats = get_status_code(url=list)
     embed.add_field(name=list, value=res)
   await ctx.send(embed=embed)
+
+  bot.run("YOUR TOKEN HERE")
